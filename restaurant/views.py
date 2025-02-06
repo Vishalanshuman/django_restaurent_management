@@ -131,7 +131,7 @@ class AdminOrderStatusUpdateView(viewsets.ViewSet):
         order = Order.objects.get(pk=pk)
         order.status = request.data.get('status', order.status)
         order.save()
-        send_order_update_emails(order.customer.id)
+        send_order_update_emails(order.customer.id, order.status)
         return Response({'status': order.status})
 
 def get_recommendations(user):
