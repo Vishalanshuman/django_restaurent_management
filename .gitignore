@@ -1,0 +1,65 @@
+# Python
+*.pyc
+*.pyo
+__pycache__
+
+# Virtual Environments
+venv/
+env/
+*.env
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+*.db
+*.db-journal
+staticfiles/
+media/
+*.coverage
+nosetests.xml
+coverage.xml
+*.hypothesis/
+*.tox/
+*.nox/
+*.coverage/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# mypy
+.mypy_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Docker
+*.log
+*.pid
+*.swp
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Django migrations
+migrations/
+
+# Dependency directories
+node_modules/
+bower_components/
+
+# Pytest
+.cache/
+
+# Tox
+.tox/
+
+# Editor directories and files
+*.sublime-workspace
+*.sublime-project
