@@ -72,9 +72,19 @@ class OrderViewSet(viewsets.ModelViewSet):
     @swagger_auto_schema(operation_description="Update an existing order", request_body=OrderSerializer, responses={200: OrderSerializer, 403: 'Forbidden'})
     def update(self, request, *args, **kwargs):
         order = self.get_object()
-        if request.user == order.customer:
-            return Response({"error": "You are not allowed to update orders."}, status=status.HTTP_403_FORBIDDEN)
-        return super().update(request, *args, **kwargs)
+
+        if request.user != order.customer:
+            previous_status = order.status  
+
+            response = super().update(request, *args, **kwargs)  
+
+            order.refresh_from_db()  
+            if order.status != previous_status:  
+                send_order_update_emails(order.customer.id, order.status)
+
+            return response
+
+        return Response({"error": "You are not allowed to update orders."}, status=status.HTTP_403_FORBIDDEN)
 
 
 class RecommendationsView(APIView):
