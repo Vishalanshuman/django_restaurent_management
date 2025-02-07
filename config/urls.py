@@ -5,17 +5,20 @@ from django.urls import path, include
 from django.contrib import admin
 
 schema_view = get_schema_view(
-   openapi.Info(
-      title="Food Ordering API",
-      default_version='v1',
-      description="API documentation for the food ordering system",
-      terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="contact@foodapi.local"),
-      license=openapi.License(name="BSD License"),
-   ),
-   public=True,
-   permission_classes=(permissions.AllowAny,),
+    openapi.Info(
+        title="Food Ordering API",
+        default_version='v1',
+        description="API documentation for the food ordering system",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="contact@foodapi.local"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+    authentication_classes=[],  # No authentication required for viewing docs
 )
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

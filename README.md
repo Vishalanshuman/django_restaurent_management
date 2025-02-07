@@ -114,7 +114,3 @@ django_restorent_management/
   ```bash
   pytest
   ```
-
-## License
-
-This project is licensed under the MIT License.
